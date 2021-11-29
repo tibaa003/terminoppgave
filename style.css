@@ -1,0 +1,25 @@
+header{
+    height: 100px;
+    border-bottom: 1px solid black;
+}
+
+.contentContainer{
+    display: flex;
+    margin: auto;
+    width: fit-content;
+    align-content: row;
+    padding: 100px;
+}
+
+.contentContainer div{
+    padding: 0 50px 0 50px;
+}
+
+.imageContainer img{
+    height: 200px;
+    width: 500px;
+}
+
+.descriptionContainer{
+
+}
