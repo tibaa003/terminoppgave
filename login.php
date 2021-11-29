@@ -68,14 +68,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         } else{
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid username or password.";
+                            $_SESSION["loggedin"] = false;
                         }
                     }
                 } else{
                     // Username doesn't exist, display a generic error message
                     $login_err = "Invalid username or password.";
+                    $_SESSION["loggedin"] = false;
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
+                $_SESSION["loggedin"] = false;
             }
 
             // Close statement
@@ -125,6 +128,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
             <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+            <a href="./index.php">back</a>
         </form>
     </div>
 </body>

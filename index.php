@@ -10,6 +10,15 @@
 <body>
     <header>
         <a href="./login.php">login</a>
+        <a href="./logout.php">logout</a>
+        <?php
+            session_start();
+            if(isset($_SESSION["loggedin"])){
+                echo '<p>' . $_SESSION["username"] . '</php>';
+            } else{
+                echo '<a href="register.php">Register</a>';
+            }
+        ?>
     </header>
     <div class="contentContainer">
         <div class="imageContainer">
