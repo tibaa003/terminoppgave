@@ -18,8 +18,9 @@ header{
 .imageContainer img{
     height: 200px;
     width: 500px;
+    border: 1px solid black;
 }
 
 .descriptionContainer{
-
+    border: 1px solid black;
 }
