@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
 <body>
     <header>
-        <a href="./login.php">login</a>
-        <a href="./logout.php">logout</a>
         <?php
             session_start();
             if(isset($_SESSION["loggedin"])){
-                echo '<p>' . $_SESSION["username"] . '</php>';
+                echo '<p id="textCenter">Hello ' . $_SESSION["username"] . '</p>';
+                echo '<p id="textCenter"> <a class="button" href="./logout.php">logout</a> </p>';
             } else{
-                echo '<a href="register.php">Register</a>';
+                echo '<p id="textCenter"> <a class="button" id="textCenter" href="./login.php">login</a> </p>';
+                echo '<p id="textCenter"> <a class="button" id="textCenter" href="register.php">Register</a> </p>';
             }
         ?>
     </header>
