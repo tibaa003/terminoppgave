@@ -21,7 +21,7 @@
     </header>
     <div class="contentContainer">
         <div class="imageContainer">
-            <img src="./assets/ev1.jpg" alt="ev1">
+            <a href="./evenQuiz.php"><img src="./assets/ev1.jpg" alt="ev1"></a>
         </div>
         <div class="descriptionContainer">
             <h1>even quiz</h1>
