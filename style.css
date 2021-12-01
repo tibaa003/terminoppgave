@@ -41,20 +41,20 @@ header {
   border-left: 1px solid #cccccc;
 }
 
-div#startContainer button{
+.submit{
   display: block;
   margin: auto;
-  margin-top: 100px;
   padding: 20px;
+  width: 100px;
 } 
 
-.question{
+.questionContainer{
   display: flex;
   justify-content: center;
   flex-flow: column wrap;
   text-align: center;
 }
-.question img{
+.questionContainer img{
   height: 400px;
   align-self: center;
 }
@@ -63,17 +63,30 @@ div#startContainer button{
   justify-content: space-between;
   align-self: center;
   flex-direction: column;
-  width: 500px;
+  width: 600px;
 }
-.question .questions2
+.questionContainer .questionsRow
 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 20px;
+  width: 600px;
 }
 
-.questions2 button{
+.questionsRow button{
   height: 50px;
   width: 200px;
+}
+
+.question{
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  border: 1px black solid;
+  padding: 20px;
+}
+
+.question *{
+  padding-left: 10px;
 }
