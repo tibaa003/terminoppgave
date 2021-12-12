@@ -1,12 +1,22 @@
 <?php
 session_start();
 require_once "config.php";
-if (isset($_SESSION["loggedin"])) {
-} else {
+if (!isset($_SESSION["loggedIn"])) {
     header("Location: ./login.php?evenQuiz");
 }
-$question = $link->query("SELECT evenQuestionsAnswered FROM users WHERE username = '" . $_SESSION['username'] . "'")->fetch_assoc();
-$options = $link->query("SELECT questionAnswer, questionOption1, questionOption2, questionOption3, question, questionImg FROM evenquiz WHERE questionId = " . $question['evenQuestionsAnswered'] + 1 . "")->fetch_assoc();
+
+$result = $link->query("SELECT username FROM evenusers WHERE username = '" . $_SESSION['username'] . "'")->fetch_assoc();
+
+if (!isset($result["username"])) {
+    $link->query("INSERT INTO evenusers (currentQuestion, correctAnswers, username) VALUES (1,0, '" . $_SESSION['username'] . "')");
+}
+$question = $link->query("SELECT currentQuestion FROM evenusers WHERE username = '" . $_SESSION['username'] . "'")->fetch_assoc();
+$questionAmount = $link->query("SELECT COUNT(*) as total FROM evenquiz")->fetch_assoc();
+if ($question["currentQuestion"] == $questionAmount["total"]+1) {
+    header("Location: user.php");
+}
+$question = $link->query("SELECT currentQuestion FROM evenusers WHERE username = '" . $_SESSION['username'] . "'")->fetch_assoc();
+$options = $link->query("SELECT questionAnswer, questionOption1, questionOption2, questionOption3, question, questionImg FROM evenquiz WHERE questionId = " . $question['currentQuestion'] . "")->fetch_assoc();
 $randomQuestion = array("questionOption1", "questionOption2", "questionOption3", "questionAnswer");
 
 $question1 = $randomQuestion[rand(0, count($randomQuestion) - 1)];
@@ -36,12 +46,7 @@ $question4 = $randomQuestion[0];
 </head>
 
 <body>
-    <header>
-        <?php
-        echo '<p id="textCenter">Hello ' . $_SESSION["username"] . '</p>';
-        echo '<p id="textCenter"> <a class="button" href="./logout.php">logout</a> </p>';
-        ?>
-    </header>
+    <?php require_once("header.php") ?>
     <form action="quizResult.php" method="POST" id="evenQuiz">
         <div class="questionContainer" id="question1">
             <img src="<?php echo $options["questionImg"] ?>" alt="">

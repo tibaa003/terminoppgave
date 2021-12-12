@@ -41,32 +41,32 @@ header {
   border-left: 1px solid #cccccc;
 }
 
-.submit{
+.submit {
   display: block;
   margin: auto;
   padding: 20px;
   width: 100px;
-} 
+}
 
-.questionContainer{
+.questionContainer {
   display: flex;
   justify-content: center;
   flex-flow: column wrap;
   text-align: center;
 }
-.questionContainer img{
+.questionContainer img {
   height: 400px;
   align-self: center;
 }
-.questions{
+.questions {
   display: flex;
   justify-content: space-between;
   align-self: center;
   flex-direction: column;
   width: 600px;
 }
-.questionContainer .questionsRow
-{
+
+.questionContainer .questionsRow {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -74,12 +74,12 @@ header {
   width: 600px;
 }
 
-.questionsRow button{
+.questionsRow button {
   height: 50px;
   width: 200px;
 }
 
-.question{
+.question {
   display: flex;
   flex-direction: row;
   width: 200px;
@@ -87,6 +87,6 @@ header {
   padding: 20px;
 }
 
-.question *{
+.question * {
   padding-left: 10px;
 }
