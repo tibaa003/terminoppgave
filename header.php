@@ -5,6 +5,7 @@
         session_start();
     }
     if (isset($_SESSION["loggedIn"])) {
+        echo '<a href="./user.php"> user page </a>';
         echo '<p id="textCenter">Hello ' . $_SESSION["username"] . '</p>';
         echo '<p id="textCenter"> <a class="button" href="./logout.php">logout</a> </p>';
     } else {

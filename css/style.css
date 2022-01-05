@@ -90,3 +90,22 @@ header {
 .question * {
   padding-left: 10px;
 }
+
+.column{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  flex-flow: column;
+  align-items: center;
+}
+.row{
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  width: max-content;
+  flex-direction: row;
+}
+
+.row *{
+  padding: 5px;
+}

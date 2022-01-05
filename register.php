@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -116,21 +116,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div>
                 <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                <input type="password" id="passwordInput" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                <label>Show password</label><input type="checkbox" onclick="showPassword()">
                 <span><?php echo $password_err; ?></span>
             </div>
             <div>
                 <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                <input type="password" id="confirmPasswordInput" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
                 <span><?php echo $confirm_password_err; ?></span>
             </div>
             <div>
                 <input type="submit" name="submit" value="Submit">
-                <input type="reset" value="Reset">
             </div>
             <p>Already have an account? <a class="button" href="login.php">Login here</a>.</p>
         </form>
     </div>
+    <script>
+        function showPassword() {
+            var passwordInputEl = document.getElementById("passwordInput")
+            var confirmPasswordInputEl = document.getElementById("confirmPasswordInput")
+            if (passwordInputEl.type === "password"){
+                passwordInputEl.type = "text";
+                confirmPasswordInputEl.type = "text"
+            } else{
+                passwordInputEl.type = "password"
+                confirmPasswordInputEl.type = "password"
+            }
+        }
+    </script>
 </body>
 
 </html>
