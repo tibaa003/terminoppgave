@@ -3,7 +3,7 @@
     require_once "config.php";
     $question = $link->query("SELECT currentQuestion FROM evenusers WHERE username = '" . $_SESSION['username'] . "'")->fetch_assoc();
     $questionAmount = $link->query("SELECT COUNT(*) as total FROM evenquiz")->fetch_assoc();
-    $sql = $link->query("SELECT questionAnswer FROM evenquiz WHERE questionId = " . $question['evenQuestionsAnswered'] + 1 . "")->fetch_assoc();
+    $sql = $link->query("SELECT questionAnswer FROM evenquiz WHERE questionId = " . $question['currentQuestion'] . "")->fetch_assoc();
     $answer = $_POST["questionInput"];
 
 

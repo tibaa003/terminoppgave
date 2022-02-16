@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php require_once("header.php") ?>
+    <?php require_once("./header.php") ?>
     <div class="contentContainer">
         <div class="imageContainer">
             <a href="./evenQuiz.php"><img src="./assets/ev1.jpg" alt="ev1"></a>
