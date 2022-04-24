@@ -9,7 +9,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 }
 
 // Include config file
-require_once "config.php";
+require_once "../php/config.php";
 
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             session_start();
                             $_SESSION["loggedIn"] = true;
                             $_SESSION["username"] = $username;
-                            header("location: index.php");
+                            header("location: ../html/index.php");
                         } else {
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid username or password.";
@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="submit" value="Login">
             </div>
             <p>Don't have an account? <a class="button" href="register.php">Sign up now</a>.</p>
-            <a class="button" href="./index.php">home</a>
+            <a class="button" href="../index.php">home</a>
         </form>
     </div>
 </body>

@@ -5,27 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
+    <title>Quiz le Even</title>
 </head>
 
 <body>
-    <?php require_once("./header.php") ?>
+    <?php require_once("./php/header.php") ?>
     <div class="contentContainer">
-        <div class="imageContainer">
-            <a href="./evenQuiz.php"><img src="./assets/ev1.jpg" alt="ev1"></a>
-        </div>
-        <div class="descriptionContainer">
-            <h1>even quiz</h1>
-        </div>
+        <a href="./html/evenQuiz.php">
+            <div class="imageContainer">
+                <img src="./assets/evenQuiz/ev1.jpg" alt="ev1">
+            </div>
+        </a>
+        <a href="./html/evenQuiz.php">
+            <div class="descriptionContainer">
+                <h1>even quiz</h1>
+            </div>
+        </a>
     </div>
     <div class="contentContainer">
-        <div class="descriptionContainer">
-            <h1>gamin</h1>
-        </div>
-        <div class="imageContainer">
-            <img src="" alt="">
-        </div>
+        <a href="./html/polishCowMilker.php">
+            <div class="descriptionContainer">
+                <h1>Cow of the Polish</h1>
+            </div>
+        </a>
+        <a href="./html/polishCowMilker.php">
+            <div class="imageContainer">
+                <img src="./assets/polishCowMilker/PolishCowGif.gif" alt="">
+            </div>
+        </a>
     </div>
+    <?php require_once("./php/footer.php") ?>
 </body>
 
 </html>

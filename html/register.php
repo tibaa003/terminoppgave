@@ -1,6 +1,6 @@
 <?php
 // Include config file
-require_once "config.php";
+require_once "../php/config.php";
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
@@ -9,7 +9,7 @@ $username_err = $password_err = $confirm_password_err = "";
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Validate username
+    // Validate username 
     if (empty(trim($_POST["username"]))) {
         $username_err = "Please enter a username.";
     } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))) {
@@ -75,7 +75,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Set parameters
             $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            // Minimum argon2id hash options
+            $hash_options = [
+                'memory_cost' => 39*1024, //39 MB = 37 MiB
+                'time_cost' => 1,
+                'threads' => 1, 
+            ];
+            $param_password = password_hash($password, PASSWORD_ARGON2ID, $hash_options); // Creates a password hash
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {

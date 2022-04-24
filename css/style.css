@@ -10,13 +10,10 @@ header {
 .contentContainer {
   display: flex;
   margin: auto;
+  text-align: center;
   width: fit-content;
   align-content: row;
   padding: 100px;
-}
-
-.contentContainer div {
-  padding: 0 50px 0 50px;
 }
 
 .imageContainer img {
@@ -27,6 +24,8 @@ header {
 
 .descriptionContainer {
   border: 1px solid black;
+  height: 200px;
+  width: 200px;
 }
 
 .button {
@@ -108,4 +107,15 @@ header {
 
 .row *{
   padding: 5px;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  color: black;
+}
+footer{
+  border-top: 1px black solid;
+  padding: 10px;
+  text-align: center  ;
 }

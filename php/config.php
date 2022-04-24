@@ -1,9 +1,8 @@
 <?php
-/* Database credentials. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
+/* Database credentials.*/
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'remoteuser');
-define('DB_PASSWORD', 'lm87Pm,');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
 define('DB_NAME', 'evenquiz');
  
 /* Attempt to connect to MySQL database */

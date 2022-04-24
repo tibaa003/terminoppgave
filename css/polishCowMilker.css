@@ -1,0 +1,129 @@
+.page {
+	/* for at hele siden skal være i flexbox */
+	display: flex;
+    flex-flow: column;
+    color: #070707;
+}
+
+.header {
+	text-align: center;
+	font-size: 2vw;
+}
+
+.title {
+	margin: 0;
+}
+
+.main {
+	/* bare kuen */
+	display: flex;
+	justify-content: center;
+}
+
+.milk {
+	/* boksen hvor melken er ikke selve melken */
+	text-align: center;
+	font-size: 2vw;
+	margin: 0;
+}
+
+#clicks {
+	margin: 0;
+}
+
+#Cow {
+	width: 20vw;
+	height: auto;
+	margin: 0;
+}
+
+.shop {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	text-align: center;
+	font-size: 2vw;
+	width: fit-content;
+	margin: 0;
+}
+
+#shopImg {
+	width: 10vw;
+	height: 10vw;
+}
+
+.allShop {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	flex-flow: row;
+	background-image: url(./Assets/ShopBackground.jpg); /*  bilde back shoppen */
+	background-size: 100% 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.upgrades {
+	display: flex;
+	flex-flow: column nowrap;
+}
+
+.god {
+	margin-left: 5vw;
+}
+
+.upgrade {
+	height: 10vw;
+	width: 10vw;
+}
+
+.allUpgrades {
+	display: flex;
+	justify-content: space-evenly;
+	flex-flow: row;
+	background-image: url(./Assets/UpgradeBackground.jpg); /* bilde back upgradesene */
+	background-size: 100% 100%;
+}
+
+.upgradePrice {
+	margin: 0;
+	font-size: 2vw;
+}
+
+.shopText {
+	font-size: 2vw;
+	margin: 0;
+}
+
+#thousandMilk {
+	/* gjelder bare 1000 melk siden */
+	position: absolute;
+	font-size: 5vw;
+	top: 50%;
+	left: 50%;
+	color: greenyellow;
+}
+
+.thousandMilkBack {
+	/* gjelder bare 1000 melk siden */
+	background-image: url(./Assets/thousandMilk.jpg);
+	background-size: 100%;
+}
+
+.noMargin {
+	/* for alt som ikke vil ha margin */
+	margin: 0;
+}
+
+#stockmarket {
+	/* stock market coming soon */
+	display: flex;
+	flex-flow: nowrap row;
+	width: 100%;
+}
+#canvas {
+	/* stock market coming soon*/
+	border: 1px solid #000000;
+	width: 98.5vw;
+	height: 40vw;
+}

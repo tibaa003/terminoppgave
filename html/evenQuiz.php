@@ -1,16 +1,13 @@
 <?php
 session_start();
-require_once "./config.php";
+require_once "../php/config.php";
 if (!isset($_SESSION["loggedIn"])) {
     header("Location: ./login.php?evenQuiz");
 }
 
-$result = $link->query("SELECT username FROM evenusers WHERE username = '" . $_SESSION['username'] . "'")->fetch_assoc();
+$result = $link->query("SELECT username FROM users WHERE username = '" . $_SESSION['username'] . "'")->fetch_assoc();
 
-if (!isset($result["username"])) {
-    $link->query("INSERT INTO evenusers (currentQuestion, correctAnswers, username) VALUES (1,0, '" . $_SESSION['username'] . "')");
-}
-$question = $link->query("SELECT currentQuestion FROM evenusers WHERE username = '" . $_SESSION['username'] . "'")->fetch_assoc();
+$question = $link->query("SELECT question FROM users WHERE userID = '" . $_SESSION['username'] . "'")->fetch_assoc();
 $questionAmount = $link->query("SELECT COUNT(*) as total FROM evenquiz")->fetch_assoc();
 if ($question["currentQuestion"] == $questionAmount["total"]+1) {
     header("Location: user.php");
@@ -41,7 +38,7 @@ $question4 = $randomQuestion[0];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Even quiz</title>
 </head>
 
