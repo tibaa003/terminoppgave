@@ -17,33 +17,33 @@
     ?>
     <div class="page">
         <div class="main">
-            <img onclick="clicked()" id="cow" src="../assets/polishCowMilker/PolishCowGif.gif" alt="PolishCow">
+            <img id="cow" src="../assets/polishCowMilker/PolishCowGif.gif" alt="PolishCow">
         </div>
         <div class="milk">
             <p id="clicks">milk:0</p>
         </div>
         <div class="allShop">
             <!-- hele shoppen -->
-            <div class="shop">
-                <img id="shopImg" onclick="buymilker()" src="../assets/polishCowMilker/Milker.png" alt="Milker">
+            <div class="shop" id="milkerShop">
+                <img class="shopImg" src="../assets/polishCowMilker/Milker.png" alt="Milker">
                 <p class="shopText" id="milkers">milkers:1</p>
                 <p class="shopText" id="priceM"></p>
             </div>
-            <div class="shop">
-                <img class="god" id="shopImg" onclick="buyGod()" src="../assets/polishCowMilker/God.png" alt="God">
+            <div class="shop" id="godShop">
+                <img class="god" class="shopImg" src="../assets/polishCowMilker/God.png" alt="God">
                 <p class="shopText" id="priceG"></p>
                 <p class="shopText" id="god">god:not real</p>
             </div>
-            <div class="shop">
-                <img id="shopImg" onclick="buyslave()" src="../assets/polishCowMilker/Slave.png" alt="Slave">
+            <div class="shop" id="slaveShop">
+                <img class="shopImg" src="../assets/polishCowMilker/Slave.png" alt="Slave">
                 <p class="shopText" id="slaves">slaves:0</p>
                 <p class="shopText" id="priceS"></p>
             </div>
         </div>
         <div class="allUpgrades">
             <!-- alle upgradesene -->
-            <div class="upgrades">
-                <img class="upgrade" onclick="upgrade()" src="../assets/polishCowMilker/MilkerUpgrade.png" alt="Milker Upgrade">
+            <div id="milkerinoShop" class="upgrades">
+                <img class="upgrade" src="../assets/polishCowMilker/MilkerUpgrade.png" alt="Milker Upgrade">
                 <p class="upgradePrice" id="priceM1"></p>
             </div>
         </div>
@@ -55,6 +55,9 @@
             <source src="../assets/polishCowMilker/PolishCow.mp3" type="audio/mp3">
         </audio>
     </div>
+    <?php
+    require_once("../php/footer.php");
+    ?>
     <script>
         // sjekker om du er logget inn etter at hele siden har lastet inn.
         $(document).ready(function() {

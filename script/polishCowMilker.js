@@ -1,30 +1,39 @@
-// Bestemmer pris
-var priceM = 10; //milker pris
-var priceS = 20; //slave pris
-var priceG = 1000000000000; //god pris
-var priceM1 = 10000; //milker upgrade pris
-
-// start variabler -- trenger å fikse for php
 var milk = 0;
-var slaves = 0;
-var milkers = 1;
-var upgradeM1 = false;
+// Bestemmer upgrades
+var milker = { amount: 1, price: 10 };
+var slave = { amount: 0, price: 20 };
+var milkerino = { owned: false, price: 10000 };
+var god = { owned: false, price: 1000000000000 };
 
-// misc
 var audio = false;
 
-$("#priceM1").text("price:" + Math.floor(priceM1));
-$("#priceM").text("price:" + Math.floor(priceM));
-$("#priceS").text("price:" + Math.floor(priceS));
-$("#priceG").text("price:" + Math.floor(priceG));
+$("#priceM1").text("price:" + Math.floor(milkerino["price"]));
+$("#priceM").text("price:" + Math.floor(milker["price"]));
+$("#priceS").text("price:" + Math.floor(slave["price"]));
+$("#priceG").text("price:" + Math.floor(god["price"]));
 
-window.setInterval(slaveCps, 1000); /* intervaler for å gi Melk per sekund */
-window.setInterval(M1Cps, 1000);
+$("#milkerShop").click(function () {
+	buy(milker);
+});
+$("#slaveShop").click(function () {
+	buy(slave);
+});
+$("#godShop").click(function () {
+	buy(god);
+});
+$("#milkerinoShop").click(function () {
+	buy(milkerino);
+});
+$("#cow").click(function () {
+	click();
+});
+
+window.setInterval(mps, 1000); /* intervaler for å gi Melk per sekund */
 
 // klikke funkskjon pluss audio spilling første gang
-function clicked() {
-	milk += milkers;
-    updateHTML();
+function click() {
+	milk += milker["amount"];
+	updateHTML();
 	// lyd
 	if (audio == false) {
 		// legge til enable disable checkmark for lyd?
@@ -34,65 +43,55 @@ function clicked() {
 	}
 }
 
-function buymilker() {
-	if (milk >= priceM) {
-		milkers++;
-		milk -= priceM;
-		priceM += milkers ** 1.15;
-        updateHTML();
-	}
-}
-
-function buyslave() {
-	/* vanlig kjøpe funksjon */
-	if (milk >= priceS) {
-		slaves++;
-		milk -= priceS;
-		priceS += slaves ** 1.15;
-        updateHTML();
-	}
-}
-
-function buyGod() {
-	/* måten å vinne spillet på */
-	if (milk >= priceG) {
-		document.getElementById("god").innerHTML = "god: REAL";
-		document.getElementById("priceG").innerHTML = "";
-		milk = Number.POSITIVE_INFINITY;
-		updateHTML()
-	}
-}
-
-function slaveCps() {
-	/* det som faktisk gir melken i cps */
-	if (slaves >= 1) {
-		milk += slaves;
-        updateHTML();
-    }
-}
-
-function M1Cps() {
-	if (upgradeM1 == true) {
-		milk += Math.floor(milkers * 0.5);
+function buy(product) {
+	if (enoughMoney(product["price"])) {
+		if (product["amount"]++) {
+			milk -= product["price"];
+			product["price"] += product["amount"] ** 1.15;
+		} else if (product["owned"] == false) {
+			milk -= product["price"];
+			product["owned"] = true;
+		}
 		updateHTML();
 	}
 }
 
-function upgrade() {
-	if (milk >= priceM1) {
-		upgradeM1 = true;
-		milk -= priceM1;
-		document.getElementById("clicks").innerHTML = "milk:" + Math.floor(milk);
-		document.getElementById("priceM1").innerHTML = "";
+function mps() {
+	/* det som faktisk gir melken i cps */
+	milk += slave["amount"];
+	if (milkerino["owned"] == true) {
+		milk += Math.floor(milker["amount"] * 0.5);
+	}
+	updateHTML();
+}
+
+// tekst update
+function updateHTML() {
+	// klikk update
+	$("#clicks").text("milk:" + Math.floor(milk));
+
+	// mengde items update
+	$("#milkers").text("milkers:" + Math.floor(milker["amount"]));
+	$("#slaves").text("slaves:" + Math.floor(slave["amount"]));
+
+	// pris update
+	$("#priceM").text("price:" + Math.floor(milker["price"]));
+	$("#priceS").text("price:" + Math.floor(slave["price"]));
+
+	// upgrade update
+	if (milkerino["owned"]) {
+		$("#priceM1").text("");
+	}
+	if (god["owned"]) {
+		$("#priceG").text("");
 	}
 }
 
-function updateHTML() {
-    $("#clicks").text("milk:" + Math.floor(milk));
-
-    $("#milkers").text("milkers:" + Math.floor(milkers));
-    $("#slaves").text("slaves:" + Math.floor(slaves));
-    
-    $("#priceM").text("price:" + Math.floor(priceM));
-    $("#priceS").text("price:" + Math.floor(priceS));
+// sjekker om man har nok melk
+function enoughMoney(price) {
+	if (milk >= price) {
+		return true;
+	} else {
+		return false;
+	}
 }
