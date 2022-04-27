@@ -1,94 +1,97 @@
-var x = 0;
-var prisM = 10;
-var milkers = 1;
-var prisS = 20;
-var slaves = 0;
-var audio = 0;
-var prisG = 1000000000000;
-var priceM1 = 10000;
-var MUpgrade = false;
-var thousand = false;
+var milk = 0;
+// Bestemmer upgrades
+var milker = { amount: 1, price: 10 };
+var slave = { amount: 0, price: 20 };
+var milkerino = { owned: false, price: 10000 };
+var god = { owned: false, price: 1000000000000 };
 
+var audio = false;
 
+$("#priceM1").text("price:" + Math.floor(milkerino["price"]));
+$("#priceM").text("price:" + Math.floor(milker["price"]));
+$("#priceS").text("price:" + Math.floor(slave["price"]));
+$("#priceG").text("price:" + Math.floor(god["price"]));
 
+$("#milkerShop").click(function () {
+	buy(milker);
+});
+$("#slaveShop").click(function () {
+	buy(slave);
+});
+$("#godShop").click(function () {
+	buy(god);
+});
+$("#milkerinoShop").click(function () {
+	buy(milkerino);
+});
+$("#cow").click(function () {
+	click();
+});
 
-document.getElementById("M1price").innerHTML = "price:" + Math.floor(priceM1); /* sette in pris i tilfelle jeg ville endre det */
+window.setInterval(mps, 1000); /* intervaler for å gi Melk per sekund */
 
-function milk() { /* klikke funkskjon pluss audio spilling første gang */
-    x += milkers
-    document.getElementById("clicks").innerHTML = "milk:" + Math.floor(x); /* math.floor overalt for å ikke ha desimaler*/
-    if (audio == 0) {
-        document.getElementById("audio").play();
-        audio = 1;
-        console.log("audio playing")
-    }
-    if (thousand == false && x == 1000) { /* epic surprise hvis du har over 1000 melk */
-        window.open("./thousand.html")
-        thousand = true
-    }
+// klikke funkskjon pluss audio spilling første gang
+function click() {
+	milk += milker["amount"];
+	updateHTML();
+	// lyd
+	if (audio == false) {
+		// legge til enable disable checkmark for lyd?
+		$("#audio").play;
+		audio = true;
+		console.log("audio playing");
+	}
 }
 
-function buymilker() { 
-    if (x >= prisM && prisM == 10) { /* hadde problemer med prisM */
-        milkers++
-        document.getElementById("milkers").innerHTML = "milkers:" + Math.floor(milkers);
-        x = x - prisM
-        document.getElementById("clicks").innerHTML = "milk:" + Math.floor(x);
-        prisM += 1
-        document.getElementById("priceM").innerHTML = "price:" + Math.floor(prisM);
-    } else if (x >= prisM) {
-        milkers++
-        document.getElementById("milkers").innerHTML = "milkers:" + Math.floor(milkers);
-        x = x - prisM
-        document.getElementById("clicks").innerHTML = "milk:" + Math.floor(x);
-        prisM += (milkers ** 1.15)
-        Math.floor(prisM)
-        document.getElementById("priceM").innerHTML = "price:" + Math.floor(prisM);
-    }
+function buy(product) {
+	if (enoughMoney(product["price"])) {
+		if (product["amount"]++) {
+			milk -= product["price"];
+			product["price"] += product["amount"] ** 1.15;
+		} else if (product["owned"] == false) {
+			milk -= product["price"];
+			product["owned"] = true;
+		}
+		updateHTML();
+	}
 }
 
-function buyslave() { /* vanlig kjøpe funksjon */
-    if (x >= prisS) {
-        slaves++
-        document.getElementById("slaves").innerHTML = "slaves:" + Math.floor(slaves);
-        x = x - prisS
-        document.getElementById("clicks").innerHTML = "milk:" + Math.floor(x);
-        prisS += (slaves ** 1.15)
-        document.getElementById("priceS").innerHTML = "price:" + Math.floor(prisS);
-    }
+function mps() {
+	/* det som faktisk gir melken i cps */
+	milk += slave["amount"];
+	if (milkerino["owned"] == true) {
+		milk += Math.floor(milker["amount"] * 0.5);
+	}
+	updateHTML();
 }
 
-function buyGod() {  /* måten å vinne spillet på */
-    if (x >= prisG) {
-        document.getElementById("god").innerHTML = "god: REAL";
-        document.getElementById("priceG").innerHTML = "";
-        x = Number.POSITIVE_INFINITY
-        document.getElementById("clicks").innerHTML = "milk:" + Math.floor(x);
-    }
-}
-window.setInterval(slaveCps, 1000); /* intervaler for å gi Melk per sekund */
-window.setInterval(M1Cps, 1000);
+// tekst update
+function updateHTML() {
+	// klikk update
+	$("#clicks").text("milk:" + Math.floor(milk));
 
-function slaveCps() { /* det som faktisk gir melken i cps */
-    if (slaves >= 1) {
-        x += slaves
-        document.getElementById("clicks").innerHTML = "milk:" + Math.floor(x);
-    }
-}
+	// mengde items update
+	$("#milkers").text("milkers:" + Math.floor(milker["amount"]));
+	$("#slaves").text("slaves:" + Math.floor(slave["amount"]));
 
-function M1Cps() {
-    if (MUpgrade == true) {
-        x += Math.floor(milkers * 0.5)
-        document.getElementById("clicks").innerHTML = "milk:" + Math.floor(x);
-    }
+	// pris update
+	$("#priceM").text("price:" + Math.floor(milker["price"]));
+	$("#priceS").text("price:" + Math.floor(slave["price"]));
+
+	// upgrade update
+	if (milkerino["owned"]) {
+		$("#priceM1").text("");
+	}
+	if (god["owned"]) {
+		$("#priceG").text("");
+	}
 }
 
-function upgradeM1() {
-    if (x >= priceM1) {
-        MUpgrade = true
-        x -= priceM1
-        document.getElementById("clicks").innerHTML = "milk:" + Math.floor(x);
-        document.getElementById("M1price").innerHTML = "";
-    }
+// sjekker om man har nok melk
+function enoughMoney(price) {
+	if (milk >= price) {
+		return true;
+	} else {
+		return false;
+	}
 }
-
