@@ -15,6 +15,7 @@
     require_once("../php/config.php");
     require_once("../php/header.php");
     ?>
+    <button id="audio">Play audio</button>
     <div class="page">
         <div class="main">
             <img id="cow" src="../assets/polishCowMilker/PolishCowGif.gif" alt="PolishCow">
@@ -50,8 +51,7 @@
         <div id="stockMarket">
             <!-- coming soon stock market -->
         </div>
-        <audio id="audio" autoplay loop>
-            <!-- lyden -->
+        <audio id="audioFile" loop>
             <source src="../assets/polishCowMilker/PolishCow.mp3" type="audio/mp3">
         </audio>
     </div>
@@ -69,7 +69,7 @@
             ?>
         })
     </script>
-    <script src="../script/polishCowMilker.js"></script>
+    <script src="../scripts/polishCowMilker.js"></script>
 </body>
 
 </html>
