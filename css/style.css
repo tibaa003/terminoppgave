@@ -92,16 +92,13 @@ header {
 
 .column{
   display: flex;
-  justify-content: space-around;
-  width: 100%;
   flex-flow: column;
-  align-items: center;
+  margin: 10px;
+  text-align: center;
 }
 .row{
   padding: 10px;
   display: flex;
-  justify-content: flex-start;
-  width: max-content;
   flex-direction: row;
 }
 

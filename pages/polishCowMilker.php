@@ -10,46 +10,45 @@
     <title>Polish Cow Milker</title>
 </head>
 
-<body class="noMargin">
+<body>
     <?php
     require_once("../php/config.php");
     require_once("../php/header.php");
     ?>
-    <button id="audio">Play audio</button>
-    <div class="page">
-        <div class="main">
-            <img id="cow" src="../assets/polishCowMilker/PolishCowGif.gif" alt="PolishCow">
+    <button id="audioButton">Play audio</button>
+    <div class="column">
+        <div class="box" id="cow">
+            <img draggable="false" src="../assets/polishCowMilker/PolishCowGif.gif" alt="PolishCow">
+            <p id="clickText">Milk: 0</p>
         </div>
-        <div class="milk">
-            <p id="clicks">milk:0</p>
-        </div>
-        <div class="allShop">
+        <div class="row spaceBetween">
             <!-- hele shoppen -->
-            <div class="shop" id="milkerShop">
-                <img class="shopImg" src="../assets/polishCowMilker/Milker.png" alt="Milker">
-                <p class="shopText" id="milkers">milkers:1</p>
-                <p class="shopText" id="priceM"></p>
+            <div class="box" id="milkerShop">
+                <img draggable="false" src="../assets/polishCowMilker/Milker.png" alt="Milker">
+                <p id="milkerAmount">Milkers: 1</p>
+                <p id="milkerPrice"></p>
             </div>
-            <div class="shop" id="godShop">
-                <img class="god" class="shopImg" src="../assets/polishCowMilker/God.png" alt="God">
-                <p class="shopText" id="priceG"></p>
-                <p class="shopText" id="god">god:not real</p>
+            <div class="box" id="godShop">
+                <img draggable="false" src="../assets/polishCowMilker/God.png" alt="God">
+                <p id="godText">God: Fake</p>
+                <p id="godPrice"></p>
             </div>
-            <div class="shop" id="slaveShop">
-                <img class="shopImg" src="../assets/polishCowMilker/Slave.png" alt="Slave">
-                <p class="shopText" id="slaves">slaves:0</p>
-                <p class="shopText" id="priceS"></p>
-            </div>
-        </div>
-        <div class="allUpgrades">
-            <!-- alle upgradesene -->
-            <div id="milkerinoShop" class="upgrades">
-                <img class="upgrade" src="../assets/polishCowMilker/MilkerUpgrade.png" alt="Milker Upgrade">
-                <p class="upgradePrice" id="priceM1"></p>
+            <div class="box" id="slaveShop">
+                <img draggable="false" src="../assets/polishCowMilker/Slave.png" alt="Slave">
+                <p id="slaveAmount">Slaves: 0</p>
+                <p id="slavePrice"></p>
             </div>
         </div>
-        <div id="stockMarket">
-            <!-- coming soon stock market -->
+        <div class="row spaceBetween">
+            <div class="box" id="milkerinoShop">
+                <img draggable="false" src="../assets/polishCowMilker/MilkerUpgrade.png" alt="Milker Upgrade">
+                <p id="milkerinoText">Milkerino: In stock</p>
+                <p id="milkerinoPrice"></p>
+            </div>
+        </div>
+        <div class="column">
+            <h1>Milk Stock</h1>
+            <canvas height="200px" width="1000px" id="stockMarket"></canvas>
         </div>
         <audio id="audioFile" loop>
             <source src="../assets/polishCowMilker/PolishCow.mp3" type="audio/mp3">
