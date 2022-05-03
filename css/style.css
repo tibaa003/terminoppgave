@@ -90,19 +90,28 @@ header {
   padding-left: 10px;
 }
 
-.column{
+.column {
   display: flex;
   flex-flow: column;
   margin: 10px;
   text-align: center;
 }
-.row{
+
+.spaceAround {
+  justify-content: space-around;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+
+.row {
   padding: 10px;
   display: flex;
   flex-direction: row;
 }
 
-.row *{
+.row * {
   padding: 5px;
 }
 
@@ -111,8 +120,8 @@ header {
   text-decoration: none;
   color: black;
 }
-footer{
+footer {
   border-top: 1px black solid;
   padding: 10px;
-  text-align: center  ;
+  text-align: center;
 }

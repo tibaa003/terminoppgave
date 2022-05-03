@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             session_start();
                             $_SESSION["loggedIn"] = true;
                             $_SESSION["username"] = $username;
-                            header("location: ../html/index.php");
+                            header("location: ../index.php");
                         } else {
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid username or password.";

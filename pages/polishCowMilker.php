@@ -16,7 +16,7 @@
     require_once("../php/header.php");
     ?>
     <button id="audioButton">Play audio</button>
-    <div class="column">
+    <div class="column spaceBetween">
         <div class="box" id="cow">
             <img draggable="false" src="../assets/polishCowMilker/PolishCowGif.gif" alt="PolishCow">
             <p id="clickText">Milk: 0</p>
@@ -46,9 +46,13 @@
                 <p id="milkerinoPrice"></p>
             </div>
         </div>
-        <div class="column">
-            <h1>Milk Stock</h1>
-            <canvas height="200px" width="1000px" id="stockMarket"></canvas>
+        <h1>Milk Stock</h1>
+        <canvas height="200px" width="1000px" id="stockMarket"></canvas>
+        <p id="stockValue">Stock value: 100</p>
+        <div class="row spaceAround">
+            <button id="buyStockBtn">Buy stock</button>
+            <p id="ownedStock">Owned stock: 0</p>
+            <button id="sellStockBtn">Sell stock</button>
         </div>
         <audio id="audioFile" loop>
             <source src="../assets/polishCowMilker/PolishCow.mp3" type="audio/mp3">
