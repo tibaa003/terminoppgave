@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
     <!-- css imports -->
-    <link rel="stylesheet" type="text/css" href="../css/polishCowMilker.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/polishCowMilker.css">
+    <link rel="stylesheet" href="../css/style.css"> -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Polish Cow Milker</title>
@@ -17,24 +17,26 @@
     require_once("../php/config.php");
     require_once("../php/header.php");
     ?>
-    <div class="dropdown m-2" id="settings">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Settings
-        </button>
-        <div class="dropdown-menu">
-            <button class="dropdown-item" id="audioButton">Play audio</button>
-            <button class="dropdown-item">Save</button>
+    <div class="d-flex flex-column">
+        <div class="dropdown m-2 align-self-end" id="settings">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Settings
+            </button>
+            <div class="dropdown-menu">
+                <button class="dropdown-item" id="audioButton">Play audio</button>
+                <button class="dropdown-item">Save</button>
+            </div>
         </div>
-    </div>
-    <div class="column spaceBetween">
-        <div class="card m-auto p-3" id="cow">
-            <img class="card-img-top" draggable="false" src="../assets/polishCowMilker/cow.png" alt="PolishCow">
-            <div class="card-body">
-                <p class="card-text" id="clickText">Milk: 0</p>
+        <div class="d-flex flex-row justify-content-around p-5">
+            <div class="card m-auto p-3" id="cow">
+                <img class="card-img-top" draggable="false" src="../assets/polishCowMilker/cow.png" alt="PolishCow">
+                <div class="card-body">
+                    <p class="card-text" id="clickText">Milk: 0</p>
+                </div>
             </div>
         </div>
 
-        <div class="row spaceBetween">
+        <div class="d-flex flex-row justify-content-around p-5">
             <!-- hele shoppen -->
             <div class="card m-auto p-3" id="milkerShop">
                 <img class="card-img-top" draggable="false" src="../assets/polishCowMilker/milker.png" alt="Milker">
@@ -58,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <div class="row spaceBetween">
+        <div class="d-flex flex-row justify-content-around p-5">
             <div class="card m-auto p-3" id="milkerinoShop">
                 <img class="card-img-top" draggable="false" src="../assets/polishCowMilker/milkerino.png" alt="Milker Upgrade">
                 <div class="card-body">
@@ -67,10 +69,12 @@
                 </div>
             </div>
         </div>
-        <h1>Milk Stock</h1>
-        <canvas height="200px" width="1000px" id="stockMarket"></canvas>
-        <p id="stockValue">Stock value: 100</p>
-        <div class="row spaceAround">
+        <div class="d-flex flex-column justify-content-center p-5">
+            <h1>Milk Stock</h1>
+            <canvas class="border" height="200px" width="1000px" id="stockMarket"></canvas>
+            <p id="stockValue">Stock value: 100</p>
+        </div>
+        <div class="d-flex flex-row justify-content-around p-5">
             <div>
                 <button id="buyStockBtn">Buy stock</button>
                 <button id="buyMaxStockBtn">Buy max stock</button>
