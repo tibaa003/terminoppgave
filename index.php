@@ -4,33 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <?php
+    require_once("./php/bootstrap.php")
+    ?>
     <title>Quiz le Even</title>
 </head>
 
 <body>
     <?php require_once("./php/header.php") ?>
-    <div class="contentContainer">
-        <a href="./html/evenQuiz.php">
-            <div class="imageContainer">
-                <img src="./assets/evenQuiz/ev1.jpg" alt="ev1">
+    <div class="d-flex flex-column align-items-center m-5">
+        <a href="./pages/evenQuiz.php" class="text-decoration-none" style="max-width: 50%">
+            <div class="card mb-3 border-dark">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img class="img-fluid rounded-start" src="./assets/evenQuiz/ev1.jpg" alt="ev1">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h3 class="card-title">Even Quiz</h1>
+                                <p class="card-text">The famous Even quiz. Try it out for free!</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </a>
-        <a href="./html/evenQuiz.php">
-            <div class="descriptionContainer">
-                <h1>even quiz</h1>
-            </div>
-        </a>
-    </div>
-    <div class="contentContainer">
-        <a href="./html/polishCowMilker.php">
-            <div class="descriptionContainer">
-                <h1>Cow of the Polish</h1>
-            </div>
-        </a>
-        <a href="./html/polishCowMilker.php">
-            <div class="imageContainer">
-                <img src="./assets/polishCowMilker/PolishCowGif.gif" alt="">
+
+        <a href="./pages/polishCowMilker.php" class="text-decoration-none" style="max-width: 50%">
+            <div class="card mb-3 border-dark">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img class="img-fluid rounded-start border" src="./assets/polishCowMilker/cow.png" alt="Cow">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h3 class="card-title">Cow of the Polish</h1>
+                                <p class="card-text">The famous game: Polish Cow Milker</p>
+                                <p>
+                                    <small class="text-muted">
+                                        New update: Stock market!
+                                    </small>
+                                </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </a>
     </div>

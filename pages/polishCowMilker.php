@@ -18,11 +18,11 @@
     require_once("../php/header.php");
     ?>
     <div class="d-flex flex-column">
-        <div class="dropdown m-2 align-self-end" id="settings">
+        <div class="dropdown m-2 mr-5 align-self-end" id="settings">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Settings
             </button>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu mr-3">
                 <button class="dropdown-item" id="audioButton">Play audio</button>
                 <button class="dropdown-item">Save</button>
             </div>

@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
                 // Redirect to login page
-                header("location: login.php");
+                header("location: ./login.php");
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -134,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div>
                 <input type="submit" name="submit" value="Submit">
             </div>
-            <p>Already have an account? <a class="button" href="login.php">Login here</a>.</p>
+            <p>Already have an account? <a class="button" href="./login.php">Login here</a>.</p>
         </form>
     </div>
     <script>
