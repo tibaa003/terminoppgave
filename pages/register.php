@@ -77,9 +77,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_username = $username;
             // Minimum argon2id hash options
             $hash_options = [
-                'memory_cost' => 39*1024, //39 MB = 37 MiB
+                'memory_cost' => 39 * 1024, //39 MB = 37 MiB
                 'time_cost' => 1,
-                'threads' => 1, 
+                'threads' => 1,
             ];
             $param_password = password_hash($password, PASSWORD_ARGON2ID, $hash_options); // Creates a password hash
 
@@ -106,33 +106,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="UTF-8">
+    <?php require_once("../php/bootstrap.php"); ?>
     <title>Sign Up</title>
-    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="p-3" style="max-width: max-content">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div>
+            <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span><?php echo $username_err; ?></span>
+                <span class="invalid-feedback"><?php echo $username_err; ?></span>
             </div>
-            <div>
+            <div class="form-group">
                 <label>Password</label>
                 <input type="password" id="passwordInput" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
-                <label>Show password</label><input type="checkbox" onclick="showPassword()">
-                <span><?php echo $password_err; ?></span>
+
+                <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
-            <div>
+            <div class="form-group">
                 <label>Confirm Password</label>
                 <input type="password" id="confirmPasswordInput" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
-                <span><?php echo $confirm_password_err; ?></span>
+                <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
-            <div>
-                <input type="submit" name="submit" value="Submit">
+            <div class="form-group p-1">
+                <label for="showPassword" class="form-check-label">Show password</label>
+                <input id="showPassword" class="form-check-input" type="checkbox" onclick="showPassword()">
+            </div>
+            <div class="form-group p-1">
+                <input class="btn btn-success" type="submit" name="submit" value="Submit">
+                <input type="reset" class="btn btn-secondary ml-2" value="Reset">
             </div>
             <p>Already have an account? <a class="button" href="./login.php">Login here</a>.</p>
         </form>
@@ -141,10 +146,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         function showPassword() {
             var passwordInputEl = document.getElementById("passwordInput")
             var confirmPasswordInputEl = document.getElementById("confirmPasswordInput")
-            if (passwordInputEl.type === "password"){
+            if (passwordInputEl.type === "password") {
                 passwordInputEl.type = "text";
                 confirmPasswordInputEl.type = "text"
-            } else{
+            } else {
                 passwordInputEl.type = "password"
                 confirmPasswordInputEl.type = "password"
             }

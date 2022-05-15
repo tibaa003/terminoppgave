@@ -1,58 +1,49 @@
 <?php
-session_start();
+// starter session hvis ikke startet
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+// Hvis bruker ikke logget inn redirect til login.php
+if (!isset($_SESSION["loggedIn"])) {
+    header("Location: ./login.php");
+} else {
+    // hvis bruker logget inn hent bruker data
+    require_once "../php/userData.php";
+}
+
+// legger til db link og noen vanlige funksjoner
 require_once "../php/config.php";
 require_once "../php/functions.php";
 
-if (!isset($_SESSION["loggedIn"])) {
-    header("Location: ../login.php?evenQuiz");
-}
-
-
-// hente ut bruker
-$user = queryDB("SELECT * FROM users WHERE username = '" . $_SESSION["username"] . "'", $link);
-
-$evenUser = queryDB("SELECT * FROM evenquizstats WHERE userId = '" . $user["id"] . "'", $link);
-
+// hvis bruker ikke har evenquiz stats
 if (!$evenUser) {
-    // hvis bruker ikke har evenquiz stats
     // lag ny bruker i evenquiz stats
     $inserted = insertDB("INSERT INTO evenquizstats (userId, question, correctAnswers) VALUES (" . $user["id"] . " ,1 ,0)", $link);
+    // hvis insert fungerte refresh siden
     if ($inserted) {
         header("Location: ./evenQuiz.php");
-    } else {
-        echo "Error: " . mysqli_error($link);
-        die();
     }
 }
+
 $questionAmount = queryDB("SELECT COUNT(*) as total FROM evenquizquestions", $link);
 
-if ($evenUser["question"] >= $questionAmount["total"]) {
+
+if ($evenUser["answeredQuestions"] == $questionAmount["total"]) {
     header("Location: ./user.php");
+} else if ($evenUser["finished"]) {
+    insertDB("UPDATE evenquizstats SET question = question + 1 WHERE userID = '" . $user["id"] . "'", $link);
+    insertDB("UPDATE evenquizstats SET finished = false WHERE userID = '" . $user["id"] . "'", $link);
 }
 
+// henter evenuser på nytt for å få med oppdateringer
+$evenUser = queryDB("SELECT * FROM evenquizstats WHERE userId = '" . $user["id"] . "'", $link);
 
-$query = "SELECT * FROM evenquizquestions WHERE ID = " . $evenUser["question"] . "";
-$result = $link->query($query);
-if ($row = $result->fetch_assoc()) {
-    $options = $row;
-}
+$options = queryDB("SELECT * FROM evenquizquestions WHERE ID = " . $evenUser["question"] . "", $link);
 
-
-$randomQuestion = array("option1", "option2", "option3", "answer");
-
-$question1 = $randomQuestion[rand(0, count($randomQuestion) - 1)];
-unset($randomQuestion[array_search($question1, $randomQuestion)]);
-$randomQuestion = array_values($randomQuestion);
-
-$question2 = $randomQuestion[rand(0, count($randomQuestion) - 1)];
-unset($randomQuestion[array_search($question2, $randomQuestion)]);
-$randomQuestion = array_values($randomQuestion);
-
-$question3 = $randomQuestion[rand(0, count($randomQuestion) - 1)];
-unset($randomQuestion[array_search($question3, $randomQuestion)]);
-$randomQuestion = array_values($randomQuestion);
-
-$question4 = $randomQuestion[0];
+// putter alle spørsmål i en array og blander rekkefølge
+$questions = array("option1", "option2", "option3", "answer");
+shuffle($questions);
 ?>
 
 <!DOCTYPE html>
@@ -71,37 +62,39 @@ $question4 = $randomQuestion[0];
 
     <form class="text-center" action="../php/quizResult.php" method="POST" id="evenQuiz">
         <div style="max-width: 60%; margin: auto;">
+            <!-- bilde -->
             <div class="text-center">
                 <img class="img-fluid m-3" style="max-width: 60%;" src="../assets/evenQuiz/<?php echo $options["imgName"] ?>" alt="">
             </div>
             <h3 class="text-center"><?php echo $options["question"] ?></h3>
             <div class="d-flex flex-row justify-content-around">
-                <input class="btn-check" type="radio" name="questionInput" id="question1Input1" value="<?php echo $options[$question1] ?>">
-                <label class="btn btn-outline-secondary btn-lg m-3" style="min-width: 20%;" for="question1Input1">
-                    <?php echo $options[$question1] ?>
+                <!-- input 1 -->
+                <input class="btn-check" type="radio" name="questionInput" id="input1" value="<?php echo $options[$questions[0]] ?>">
+                <label class="btn btn-outline-secondary btn-lg m-3" style="min-width: 20%;" for="input1">
+                    <?php echo $options[$questions[0]] ?>
                 </label>
-
-                <input class="btn-check" type="radio" name="questionInput" id="question1Input2" value="<?php echo $options[$question2] ?>">
-                <label class="btn btn-outline-secondary btn-lg m-3" style="min-width: 20%;" for="question1Input2">
-                    <?php echo $options[$question2] ?>
+                <!-- input 2 -->
+                <input class="btn-check" type="radio" name="questionInput" id="input2" value="<?php echo $options[$questions[1]] ?>">
+                <label class="btn btn-outline-secondary btn-lg m-3" style="min-width: 20%;" for="input2">
+                    <?php echo $options[$questions[1]] ?>
                 </label>
             </div>
             <div class="d-flex flex-row justify-content-around">
-                <input class="btn-check" type="radio" name="questionInput" id="question1Input3" value="<?php echo $options[$question3] ?>">
-                <label class="btn btn-outline-secondary btn-lg m-3" style="min-width: 20%;" for="question1Input3">
-                    <?php echo $options[$question3] ?>
+                <!-- input 3 -->
+                <input class="btn-check" type="radio" name="questionInput" id="input3" value="<?php echo $options[$questions[2]] ?>">
+                <label class="btn btn-outline-secondary btn-lg m-3" style="min-width: 20%;" for="input3">
+                    <?php echo $options[$questions[2]] ?>
                 </label>
-
-                <input class="btn-check" type="radio" name="questionInput" id="question1Input4" value="<?php echo $options[$question4] ?>">
-                <label class="btn btn-outline-secondary btn-lg m-3" style="min-width: 20%;" for="question1Input4">
-                    <?php echo $options[$question4] ?>
+                <!-- input 4 -->
+                <input class="btn-check" type="radio" name="questionInput" id="input4" value="<?php echo $options[$questions[3]] ?>">
+                <label class="btn btn-outline-secondary btn-lg m-3" style="min-width: 20%;" for="input4">
+                    <?php echo $options[$questions[3]] ?>
                 </label>
             </div>
+            <!-- submit knapp -->
             <input class="btn btn-success btn-lg" type="submit" value="submit">
         </div>
     </form>
-
-    <script src="./quiz.js"></script>
 </body>
 
 </html>

@@ -87,12 +87,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="UTF-8">
+    <?php require_once "../php/bootstrap.php"; ?>
     <title>Login</title>
-    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="p-3" style="max-width: max-content;">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
 
@@ -103,25 +103,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ?>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div>
+            <div class="form-group">
                 <label>Username</label>
-                <input type="text" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span><?php echo $username_err; ?></span>
+                <input type="text" name="username" class="form-control<?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                <span class="invalid-feedback"><?php echo $username_err; ?></span>
             </div>
-            <div>
+            <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                <span><?php echo $password_err; ?></span>
+                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
-            <div>
-                <label for="remember">Remember me</label>
-                <input type="checkbox" name="remember" value="true">
+            <div class="form-check">
+                <label class="form-check-label" for="remember">Remember me</label>
+                <input class="form-check-input" type="checkbox" name="remember" id="remember" value="true" checked>
             </div>
-            <div>
-                <input type="submit" value="Login">
+            <div class="form-group">
+                <input class="btn btn-success" type="submit" value="Login">
             </div>
-            <p>Don't have an account? <a class="button" href="./register.php">Sign up now</a>.</p>
-            <a class="button" href="../index.php">home</a>
+            <p>Don't have an account? <a href="./register.php">Sign up now</a>.</p>
+            <a href="../index.php">home</a>
         </form>
     </div>
 </body>

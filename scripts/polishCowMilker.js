@@ -58,6 +58,9 @@ $("#buyMaxStockBtn").click(function () {
 $("#sellMaxStockBtn").click(function () {
 	sellMaxStock();
 });
+$("#saveButton").click(function () {
+	saveGame();
+});
 
 window.setInterval(mps, 1000); // intervall for å gi Melk per sekund
 window.setInterval(stockPrice, 10000);
@@ -179,13 +182,21 @@ function sellMaxStock() {
 function buyMaxStock() {
 	modulo = milk % yCord;
 	max = (milk - modulo) / yCord;
-  milk -= max * yCord;
-  stock += max;
-  updateHTML();
+	milk -= max * yCord;
+	stock += max;
+	updateHTML();
 }
 
 function sellStock() {
 	milk += yCord;
 	stock--;
 	updateHTML();
+}
+
+const ajax = new XMLHttpRequest();
+
+function saveGame() {
+	ajax.open("POST", "../php/polishSave.php");
+	ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	ajax.send("milk=" + milk + "&milkers=" + milker.amount + "&slaves=" + slave.amount);
 }

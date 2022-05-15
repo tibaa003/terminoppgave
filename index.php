@@ -4,15 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <?php
+    // bootstrap import
     require_once("./php/bootstrap.php")
     ?>
+
     <title>Quiz le Even</title>
 </head>
 
 <body>
+    <!-- header import -->
     <?php require_once("./php/header.php") ?>
+
     <div class="d-flex flex-column align-items-center m-5">
+
+        <!-- even quiz banner -->
         <a href="./pages/evenQuiz.php" class="text-decoration-none" style="max-width: 50%">
             <div class="card mb-3 border-dark">
                 <div class="row g-0">
@@ -29,6 +36,7 @@
             </div>
         </a>
 
+        <!-- polish cow milker banner -->
         <a href="./pages/polishCowMilker.php" class="text-decoration-none" style="max-width: 50%">
             <div class="card mb-3 border-dark">
                 <div class="row g-0">
@@ -50,6 +58,8 @@
             </div>
         </a>
     </div>
+
+    <!-- footer import -->
     <?php require_once("./php/footer.php") ?>
 </body>
 

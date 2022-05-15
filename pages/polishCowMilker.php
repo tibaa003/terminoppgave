@@ -24,7 +24,7 @@
             </button>
             <div class="dropdown-menu mr-3">
                 <button class="dropdown-item" id="audioButton">Play audio</button>
-                <button class="dropdown-item">Save</button>
+                <button class="dropdown-item" id="saveButton">Save</button>
             </div>
         </div>
         <div class="d-flex flex-row justify-content-around p-5">
@@ -101,8 +101,7 @@
     <script>
         $(document).ready(function() {
             <?php
-            $loggedIn = require("../php/loggedIn.php");
-            if ($loggedIn == false) {
+            if (!isset($_SESSION["loggedIn"])) {
                 echo 'alert("Your progress won\'t be saved if you aren\'t logged in");';
             }
             ?>
@@ -110,6 +109,17 @@
     </script>
     <!-- Polish cow milker script -->
     <script src="../scripts/polishCowMilker.js"></script>
+    <script>
+        <?php
+        require_once "../php/userData.php";
+        if ($user) {
+            echo "milk = " . $polishUser["milk"] . ";";
+            echo "milker['amount'] = " . $polishUser["milkers"] . ";";
+            echo "slave['amount'] = " . $polishUser["slaves"] . ";";
+        }
+        ?>
+    </script>
+
 </body>
 
 </html>
