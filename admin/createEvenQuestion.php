@@ -1,5 +1,8 @@
 <?php
 session_start();
+if ($_SESSION["username"] != "admin") {
+    header("Location: ../index.php");
+}
 require_once "../php/config.php";
 require_once "../php/functions.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

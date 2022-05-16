@@ -133,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group p-1">
                 <label for="showPassword" class="form-check-label">Show password</label>
-                <input id="showPassword" class="form-check-input" type="checkbox" onclick="showPassword()">
+                <input id="showPassword" class="form-check-input" type="checkbox">
             </div>
             <div class="form-group p-1">
                 <input class="btn btn-success" type="submit" name="submit" value="Submit">
@@ -143,15 +143,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
     <script>
+        const showPasswordBtn = document.getElementById("showPassword");
+        showPasswordBtn.addEventListener("click", showPassword)
+
         function showPassword() {
-            var passwordInputEl = document.getElementById("passwordInput")
-            var confirmPasswordInputEl = document.getElementById("confirmPasswordInput")
+            var passwordInputEl = document.getElementById("passwordInput");
+            var confirmPasswordInputEl = document.getElementById("confirmPasswordInput");
             if (passwordInputEl.type === "password") {
                 passwordInputEl.type = "text";
-                confirmPasswordInputEl.type = "text"
+                confirmPasswordInputEl.type = "text";
             } else {
-                passwordInputEl.type = "password"
-                confirmPasswordInputEl.type = "password"
+                passwordInputEl.type = "password";
+                confirmPasswordInputEl.type = "password";
             }
         }
     </script>

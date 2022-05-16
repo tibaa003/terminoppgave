@@ -10,6 +10,11 @@ function queryDB($sql, $link)
     }
 }
 
+function queryRowsDB($sql, $link)
+{
+    return mysqli_query($link, $sql);
+}
+
 function insertDB($sql, $link)
 {
     if (mysqli_query($link, $sql)) {

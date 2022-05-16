@@ -18,23 +18,31 @@
             session_start();
         }
         // hvis person logget inn
-        if (isset($_SESSION["loggedIn"])) { ?>
-            <!-- user home page knapp -->
-            <a class="btn
+        if (isset($_SESSION["loggedIn"])) {
+            if ($_SESSION["username"] == "admin") { ?>
+                <a class="btn
+                <?php if (strpos($url, "hub")) { ?> 
+                btn-secondary" <?php } else { ?> btn-primary" <?php } ?> href="/terminoppg/admin/hub.php">CRUD systems</a>
+    </div>
+<?php } else { ?>
+    <!-- user home page knapp -->
+    <a class="btn
         <?php
-            // hvis url inneholder user
-            if (strpos($url, "user")) { ?>
+                // hvis url inneholder user
+                if (strpos($url, "user")) { ?>
             btn-secondary 
         <?php } else { ?>
             btn-primary" <?php }; ?> href="/terminoppg/pages/user.php">User page</a>
+
     </div>
-    <!-- hallo + navn -->
-    <p class="align-self-center">Hello
-        <strong>
-            <?php echo $_SESSION["username"]; ?>
-        </strong>
-    </p>
-    <a class="btn btn-primary align-self-center" href="/terminoppg/php/logout.php">logout</a>
+<?php  } ?>
+<!-- hallo + navn -->
+<p class="align-self-center">Hello
+    <strong>
+        <?php echo $_SESSION["username"]; ?>
+    </strong>
+</p>
+<a class="btn btn-primary align-self-center" href="/terminoppg/php/logout.php">logout</a>
 <?php   // hvis person ikke logget inn
         } else { ?>
     </div>
