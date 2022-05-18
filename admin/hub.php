@@ -18,9 +18,9 @@ if ($_SESSION["username"] != "admin") {
 
 <body>
     <?php include("../php/header.php"); ?>
-    <div class="d-flex flex-column p-3" style="max-width: fit-content;">
-        <a class="btn btn-primary m-3" href="./createEvenQuestion.php">Create Even Quiz question</a>
-        <a class="btn btn-primary m-3" href="./createFaq.php">Create FAQ question</a>
+    <div class="d-flex flex-column p-3">
+        <a class="btn btn-primary m-3" style="max-width: fit-content;" href="./createEvenQuestion.php">Create Even Quiz question</a>
+        <a class="btn btn-primary m-3" style="max-width: fit-content;" href="./createFaq.php">Create FAQ question</a>
     </div>
     <?php include("../php/footer.php") ?>
 </body>

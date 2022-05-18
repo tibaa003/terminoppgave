@@ -65,6 +65,8 @@ $("#saveButton").click(function () {
 window.setInterval(mps, 1000); // intervall for å gi Melk per sekund
 window.setInterval(stockPrice, 10000);
 
+updateHTML();
+
 // klikke funkskjon
 function click() {
 	milk += milker["amount"];
@@ -75,7 +77,11 @@ function buy(product) {
 	if (enoughMoney(product["price"])) {
 		if (product["amount"]++) {
 			milk -= product["price"];
-			product["price"] += product["amount"] ** 1.15;
+			if (product["amount"] > 0) {
+				product["price"] += product["amount"] ** 1.15;
+			} else {
+				product["price"] += 2;
+			}
 		} else if (product["owned"] == false) {
 			milk -= product["price"];
 			product["owned"] = true;
@@ -193,6 +199,7 @@ function sellStock() {
 	updateHTML();
 }
 
+// saving to db
 const ajax = new XMLHttpRequest();
 
 function saveGame() {

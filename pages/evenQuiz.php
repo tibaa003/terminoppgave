@@ -12,6 +12,10 @@ if (!isset($_SESSION["loggedIn"])) {
     require_once "../php/userData.php";
 }
 
+if ($_SESSION["username"] == "admin") {
+    header("Location: ../admin/createEvenQuestion.php");
+}
+
 // legger til db link og noen vanlige funksjoner
 require_once "../php/config.php";
 require_once "../php/functions.php";
