@@ -1,8 +1,8 @@
 <?php
 /* Database credentials.*/
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
+define('DB_SERVER', '192.168.1.234:3306');
+define('DB_USERNAME', '3s33t');
+define('DB_PASSWORD', 'o78V4T835KU6');
 define('DB_NAME', 'evenquiz');
  
 /* Attempt to connect to MySQL database */
