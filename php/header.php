@@ -4,13 +4,11 @@
         <?php $url = $_SERVER['REQUEST_URI']; ?>
 
         <!-- home knapp -->
-        <a class="btn 
+        <a class="btn btn-primary
         <?php
         // hvis url inneholder index
         if (strpos($url, "index")) { ?>
-            btn-secondary 
-        <?php } else { ?>
-            btn-primary" <?php }; ?> href="/terminoppg/index.php">Home</a>
+            disabled" <?php } else { ?> " <?php }; ?> href=" /terminoppg/index.php">Home</a>
 
         <?php
         // start session hvis ikke startet
@@ -20,19 +18,17 @@
         // hvis person logget inn
         if (isset($_SESSION["loggedIn"])) {
             if ($_SESSION["username"] == "admin") { ?>
-                <a class="btn
+                <a class="btn btn-primary
                 <?php if (strpos($url, "hub")) { ?> 
-                btn-secondary" <?php } else { ?> btn-primary" <?php } ?> href="/terminoppg/admin/hub.php">CRUD systems</a>
+                disabled" <?php } else { ?> " <?php } ?> href=" /terminoppg/admin/hub.php">CRUD systems</a>
     </div>
 <?php } else { ?>
     <!-- user home page knapp -->
-    <a class="btn
+    <a class="btn btn-primary
         <?php
                 // hvis url inneholder user
                 if (strpos($url, "user")) { ?>
-            btn-secondary 
-        <?php } else { ?>
-            btn-primary" <?php }; ?> href="/terminoppg/pages/user.php">User page</a>
+            disabled" <?php } else { ?> " <?php }; ?> href=" /terminoppg/pages/user.php">User page</a>
 
     </div>
 <?php  } ?>
