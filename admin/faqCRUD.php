@@ -1,8 +1,3 @@
-<?php
-session_start();
-require_once("../php/config.php");
-include("../php/functions.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,14 +6,16 @@ include("../php/functions.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include("../php/bootstrap.php"); ?>
-    <title>Frequently asked questions</title>
+    <title>FAQ CRUD</title>
 </head>
 
 <body>
-    <?php include("../php/header.php"); ?>
+    <?php require_once("../php/header.php") ?>
     <div class="d-flex flex-column align-items-center text-center m-auto">
 
         <?php
+        include("../php/config.php");
+        include("../php/functions.php");
         // printe ut faq spørsmål 
         $questions = queryRowsDB("SELECT * FROM faqs", $link);
         $rows = [];
@@ -41,6 +38,8 @@ include("../php/functions.php");
         <?php }
         ?>
     </div>
+
+    <?php require_once("../php/footer.php") ?>
 </body>
 
 </html>

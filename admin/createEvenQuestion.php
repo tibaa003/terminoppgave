@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     insertDB("INSERT INTO evenquizquestions (id, question, answer, option1, option2, option3, imgName) VALUES ('" . $questionAmount["total"] + 1 . "','" . $_POST["question"] . "','" . $_POST["answer"] . "','" . $_POST["option1"] . "','" . $_POST["option2"] . "','" . $_POST["option3"] . "','" . $_FILES["img"]["name"] . "')", $link);
 
-    header("Location: ../index.php");
+    header("Location: ./evenQuizCRUD.php");
 };
 ?>
 
@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+    <?php require_once("../php/header.php") ?>
     <div class="m-3" style="max-width: fit-content;">
         <h1>Create Even quiz question form</h1>
         <p>Please fill out form to create a question</p>
@@ -63,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </form>
     </div>
+    <?php require_once("../php/footer.php") ?>
 </body>
 
 </html>

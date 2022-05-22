@@ -11,7 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate email 
     if (empty(trim($_POST["e_mail"]))) {
-        $e_mail_err = "Please enter an e-mail.";
+        $e_mail_err = "Please enter a e-mail.";
+    } elseif (!preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/', trim($_POST["e_mail"]))) {
+        $e_mail_err = "Please enter a valid e-mail.";
     } else {
         // Prepare a select statement
         $sql = "SELECT id FROM users WHERE email = ?";
@@ -175,8 +177,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input id="showPassword" class="form-check-input" type="checkbox">
             </div>
             <div class="form-group p-1">
-                <input class="btn btn-success" type="submit" name="submit" value="Submit">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Register
+                </button>
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Privacy policy</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            By registering with us you agree to us saving your email and username in out database. These will only be used to identify you on our site and will be visible to others.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input class="btn btn-success" type="submit" name="submit" value="Submit">
+                        </div>
+                    </div>
+                </div>
             </div>
             <p>Already have an account? <a class="button" href="./login.php">Login here</a>.</p>
         </form>

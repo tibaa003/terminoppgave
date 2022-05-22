@@ -114,6 +114,7 @@
     </script>
     <!-- Polish cow milker script -->
     <script src="../scripts/polishCowMilker.js"></script>
+    <!-- load inn user data -->
     <script>
         <?php
         require_once "../php/userData.php";
