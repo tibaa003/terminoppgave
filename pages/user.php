@@ -30,7 +30,7 @@ include("../php/userData.php");
                 }
             ?>
                 <div class="card m-5">
-                    <img class="card-img-top" width="516px" height="180px" src="../assets/evenQuiz/ev1.jpg" alt="Card image cap">
+                    <img class="card-img-top" width="516" height="180" src="../assets/evenQuiz/ev1.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Even Quiz</h5>
                         <p class="card-text"><?php echo $correctText; ?></p>
@@ -44,7 +44,7 @@ include("../php/userData.php");
                 $slaveText = "Slaves: " . $polishUser["slaves"];
             ?>
                 <div class="card m-5">
-                    <img class="card-img-top" src="../assets/polishCowMilker/cow.png" alt="Card image cap" width="516px" height="180px">
+                    <img class="card-img-top" src="../assets/polishCowMilker/cow.png" alt="Card image cap" width="516" height="180">
                     <div class="card-body">
                         <h5 class="card-title">Polish Cow Milker</h5>
                         <p class="card-text"><?php echo $milkText; ?></p>
@@ -55,6 +55,7 @@ include("../php/userData.php");
             <?php } ?>
         </div>
     </div>
+    <?php require_once("../php/footer.php"); ?>
 </body>
 
 </html>

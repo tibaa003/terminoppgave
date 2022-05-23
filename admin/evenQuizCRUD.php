@@ -18,17 +18,13 @@
         include("../php/functions.php");
         // printe ut even spørsmål 
         $questions = queryRowsDB("SELECT * FROM evenquizquestions", $link);
+        $questionAmount = queryDB("SELECT COUNT(*) as total FROM evenquizquestions", $link);
         $rows = [];
         while ($row = mysqli_fetch_array($questions)) {
             $rows[] = $row;
         }
-        if (count($rows) < 10) {
-            $rowAmount = count($rows);
-        } else {
-            $rowAmount = 10;
-        }
 
-        for ($i = 0; $i < $rowAmount; $i++) { ?>
+        for ($i = 0; $i < $questionAmount["total"]; $i++) { ?>
             <div class="card m-3">
                 <img class="card-img-top" src="../assets/evenQuiz/<?php echo $rows[$i]["imgName"] ?>" width="516px" height="180px" alt="">
                 <div class="card-body">

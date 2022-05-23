@@ -76,7 +76,7 @@
         <!-- stock market -->
         <div class="d-flex flex-column justify-content-center p-5">
             <h1>Milk Stock</h1>
-            <canvas class="border" height="200px" width="1000px" id="stockMarket"></canvas>
+            <canvas class="border" height="200" width="1000" id="stockMarket"></canvas>
             <p id="stockValue">Stock value: 100</p>
         </div>
         <div class="d-flex flex-row justify-content-around p-5">

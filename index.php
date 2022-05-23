@@ -28,8 +28,8 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h3 class="card-title">Even Quiz</h1>
-                                <p class="card-text">The famous Even quiz. Try it out for free!</p>
+                            <h3 class="card-title">Even Quiz</h3>
+                            <p class="card-text">The famous Even quiz. Try it out for free!</p>
                         </div>
                     </div>
                 </div>
@@ -45,13 +45,13 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h3 class="card-title">Cow of the Polish</h1>
-                                <p class="card-text">The famous game: Polish Cow Milker</p>
-                                <p>
-                                    <small class="text-muted">
-                                        New update: Stock market!
-                                    </small>
-                                </p>
+                            <h3 class="card-title">Cow of the Polish</h3>
+                            <p class="card-text">The famous game: Polish Cow Milker</p>
+                            <p>
+                                <small class="text-muted">
+                                    New update: Stock market!
+                                </small>
+                            </p>
                         </div>
                     </div>
                 </div>

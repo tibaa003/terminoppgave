@@ -96,7 +96,7 @@ shuffle($questions);
                 </label>
             </div>
             <!-- submit knapp -->
-            <input class="btn btn-success btn-lg" type="submit" value="submit">
+            <input class="btn btn-success btn-lg mb-3" type="submit" value="submit">
         </div>
     </form>
     <?php require_once("../php/footer.php") ?>
