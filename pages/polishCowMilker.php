@@ -39,7 +39,7 @@
         <div class="d-flex flex-row justify-content-around p-5">
             <!-- milker -->
             <div class="card m-auto p-3" id="milkerShop">
-                <img class="card-img-top" draggable="false" src="../assets/polishCowMilker/milker.png" alt="Milker">
+                <img class="card-img-top" draggable="false" src="../assets/polishCowMilker/Milker.png" alt="Milker">
                 <div class="card-body">
                     <p class="card-text" id="milkerAmount">Milkers: 1</p>
                     <p class="card-text" id="milkerPrice"></p>
@@ -47,7 +47,7 @@
             </div>
             <!-- god -->
             <div class="card m-auto p-3" id="godShop">
-                <img class="card-img-top" draggable="false" src="../assets/polishCowMilker/god.png" alt="God">
+                <img class="card-img-top" draggable="false" src="../assets/polishCowMilker/God.png" alt="God">
                 <div class="card-body">
                     <p class="card-text" id="godText">God: Fake</p>
                     <p class="card-text" id="godPrice"></p>
@@ -55,7 +55,7 @@
             </div>
             <!-- slave -->
             <div class="card m-auto p-3" id="slaveShop">
-                <img class="card-img-top" draggable="false" src="../assets/polishCowMilker/slave.png" alt="Slave">
+                <img class="card-img-top" draggable="false" src="../assets/polishCowMilker/Slave.png" alt="Slave">
                 <div class="card-body">
                     <p class="card-text" id="slaveAmount">Slaves: 0</p>
                     <p class="card-text" id="slavePrice"></p>
