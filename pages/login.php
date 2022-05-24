@@ -92,6 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+    <?php require_once "../php/header.php"; ?>
     <div class="p-3" style="max-width: max-content;">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
@@ -121,9 +122,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input class="btn btn-success" type="submit" value="Login">
             </div>
             <p>Don't have an account? <a href="./register.php">Sign up now</a>.</p>
-            <a href="../index.php">home</a>
         </form>
     </div>
+    <?php require_once "../php/footer.php"; ?>
 </body>
 
 </html>

@@ -147,6 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+    <?php require_once "../php/header.php"; ?>
     <div class="p-3" style="max-width: max-content">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
@@ -204,6 +205,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>Already have an account? <a class="button" href="./login.php">Login here</a>.</p>
         </form>
     </div>
+    <?php require_once "../php/footer.php"; ?>
     <script>
         const showPasswordBtn = document.getElementById("showPassword");
         showPasswordBtn.addEventListener("click", showPassword)
@@ -219,6 +221,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 confirmPasswordInputEl.type = "password";
             }
         }
+
+        // disable enter key to submit
+        window.addEventListener('keydown', function(e) {
+            if (e.keyIdentifier == 'U+000A' || e.keyIdentifier == 'Enter' || e.keyCode == 13) {
+                if (e.target.nodeName == 'INPUT' && e.target.type == 'text') {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        }, true);
     </script>
 </body>
 
