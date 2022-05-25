@@ -1,6 +1,9 @@
 <?php
 include("../php/config.php");
 include("../php/functions.php");
+if ($_SESSION["username"] != "admin") {
+    header("Location: ../index.php");
+}
 $questionAmount = queryDB("SELECT COUNT(*) as total FROM evenquizquestions", $link);
 
 if ($questionAmount["total"] <= $_GET["id"]) {

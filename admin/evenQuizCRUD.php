@@ -11,6 +11,9 @@
 
 <body>
     <?php require_once("../php/header.php") ?>
+    if ($_SESSION["username"] != "admin") {
+    header("Location: ../index.php");
+}
     <div class="d-flex flex-column align-items-center text-center m-auto">
 
         <?php

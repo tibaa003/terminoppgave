@@ -1,6 +1,9 @@
 <?php
 include("../php/config.php");
 include("../php/functions.php");
+if ($_SESSION["username"] != "admin") {
+    header("Location: ../index.php");
+}
 $question = queryDB("SELECT * FROM evenquizquestions WHERE ID = " . $_GET["id"] . "", $link);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($_FILES["img"]["name"] != "") {
