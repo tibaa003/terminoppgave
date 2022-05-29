@@ -5,11 +5,9 @@ if ($_SESSION["username"] != "admin") {
 }
 require_once "../../php/include/config.php";
 require_once "../../php/include/functions.php";
-$order = queryDB("SELECT order_nr FROM even_quiz_question ORDER BY order_nr DESC LIMIT 1", $link);
+
 $question_amount = queryDB("SELECT COUNT(*) as total FROM even_quiz_question", $link);
-if (!$order) {
-    $order["order_nr"] = 1;
-}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($_FILES["img"]) {
         $imgName = $_FILES["img"]["name"];
@@ -17,12 +15,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         move_uploaded_file($imgTmpName, "../assets/evenQuiz/" . $imgName);
     }
-    $current_order = queryDB("SELECT order_nr FROM even_quiz_question WHERE order_nr = " . $_POST["order"], $link);
-    $old_order = $question_amount["total"] + 1;
+    // find the last possible item in the order
+    $last_in_order = $question_amount["total"] + 1;
+    // set the order_nr of the item in the place of the new item to 0
     insertDB("UPDATE even_quiz_question SET order_nr = 0 WHERE order_nr = " . $_POST["order"], $link);
+    // create the question
     insertDB("INSERT INTO even_quiz_question (question, answer, option1, option2, option3, img_name, order_nr) VALUES ('" . $_POST["question"] . "','" . $_POST["answer"] . "','" . $_POST["option1"] . "','" . $_POST["option2"] . "','" . $_POST["option3"] . "','" . $_FILES["img"]["name"] . "','" . $_POST["order"] . "')", $link);
-    insertDB("UPDATE even_quiz_question SET order_nr = '" . $old_order . "' WHERE order_nr = 0", $link);
-
+    // put the order that got moved to order_nr 0 to last item
+    insertDB("UPDATE even_quiz_question SET order_nr = '" . $last_in_order . "' WHERE order_nr = 0", $link);
 
     header("Location: ./crud_even.php");
 };

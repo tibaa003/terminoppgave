@@ -19,14 +19,16 @@
         <?php
         include("../../php/include/config.php");
         include("../../php/include/functions.php");
-        // printe ut even spørsmål 
+        // få hver spørsmål sortert etter order
         $questions = queryRowsDB("SELECT * FROM even_quiz_question ORDER BY order_nr", $link);
         $questionAmount = queryDB("SELECT COUNT(*) as total FROM even_quiz_question", $link);
+
+        // putt hver spørsmål i arrayen row
         $rows = [];
         while ($row = mysqli_fetch_array($questions)) {
             $rows[] = $row;
         }
-
+        // for hver spørsmål, lag en element i html
         for ($i = 0; $i < $questionAmount["total"]; $i++) { ?>
             <div class="card m-3">
                 <img class="card-img-top" src="../../assets/evenQuiz/<?php echo $rows[$i]["img_name"] ?>" width="516px" height="180px" alt="">

@@ -16,13 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $imgName = $question["imgName"];
     }
-    $current_order = queryDB("SELECT order_nr FROM even_quiz_question WHERE order_nr = " . $_POST["order"], $link);
-    $old_order = $question["order_nr"];
+    // set order of item in select order to 0
     insertDB("UPDATE even_quiz_question SET order_nr = 0 WHERE order_nr = " . $_POST["order"], $link);
+    // edit the question
     insertDB("UPDATE even_quiz_question SET question = '" . $_POST["question"] . "', answer = '" . $_POST["answer"] . "', option1 = '" . $_POST["option1"] . "', option2 = '" . $_POST["option2"] . "', option3 = '" . $_POST["option3"] . "', img_name = '" . $imgName . "', order_nr = '" . $_POST["order"] . "' WHERE question_id = " . $question['question_id'], $link);
-    insertDB("UPDATE even_quiz_question SET order_nr = '" . $old_order . "' WHERE order_nr = 0", $link);
+    // set order of item with order 0 til edited items order
+    insertDB("UPDATE even_quiz_question SET order_nr = '" . $question["order_nr"] . "' WHERE order_nr = 0", $link);
 
-    insertDB("UPDATE even_quiz_question SET question = '" . $_POST["question"] . "', answer = '" . $_POST["answer"] . "', option1 = '" . $_POST["option1"] . "', option2 = '" . $_POST["option2"] . "', option3 = '" . $_POST["option3"] . "', img_name = '" . $imgName . "', order_nr = '" . $_POST["order"] . "' WHERE question_id = " . $question['question_id'], $link);
     header("Location: ./crud_even.php");
 }
 ?>
