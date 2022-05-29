@@ -7,7 +7,7 @@
 
     <?php
     // bootstrap import
-    require_once("./php/bootstrap.php")
+    require_once("./php/include/html/bootstrap.php")
     ?>
 
     <title>Quiz le Even</title>
@@ -15,12 +15,12 @@
 
 <body>
     <!-- header import -->
-    <?php require_once("./php/header.php") ?>
+    <?php require_once("./php/include/html/header.php") ?>
 
     <div class="d-flex flex-column align-items-center m-5">
 
         <!-- even quiz banner -->
-        <a href="./pages/evenQuiz.php" class="text-decoration-none" style="max-width: 50%">
+        <a href="./pages/content/evenQuiz.php" class="text-decoration-none" style="max-width: 50%">
             <div class="card mb-3 border-dark">
                 <div class="row g-0">
                     <div class="col-md-4">
@@ -37,11 +37,11 @@
         </a>
 
         <!-- polish cow milker banner -->
-        <a href="./pages/polishCowMilker.php" class="text-decoration-none" style="max-width: 50%">
+        <a href="./pages/content/polish_cow_milker.php" class="text-decoration-none" style="max-width: 50%">
             <div class="card mb-3 border-dark">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img class="img-fluid rounded-start border" src="./assets/polishCowMilker/cow.png" alt="Cow">
+                        <img class="img-fluid rounded-start border" src="./assets/polish_cow_milker/cow.png" alt="Cow">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -58,9 +58,8 @@
             </div>
         </a>
     </div>
-
     <!-- footer import -->
-    <?php require_once("./php/footer.php") ?>
+    <?php require_once("./php/include/html/footer.php") ?>
 </body>
 
 </html>
